@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 class Pokemon {
   String nome;
 
@@ -5,4 +7,3 @@ class Pokemon {
     nome = json["name"];
   }
 }
-
