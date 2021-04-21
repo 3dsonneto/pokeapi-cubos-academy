@@ -1,6 +1,13 @@
+import 'package:aula_api/api.dart';
+import 'package:aula_api/pokemon.dart';
+
 class PokeModel {
-  fetchPokemon() {
+  Future<Pokemon> _pokemon;
+
+  Future<Pokemon> get pokemon => _pokemon;
+
+  fetchPokemon(int number) {
     //faz chamada pra api
-    print("Chamada da api");
+    _pokemon = API().fetchPokemon(number);
   }
 }

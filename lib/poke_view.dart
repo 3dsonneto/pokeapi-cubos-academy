@@ -1,4 +1,5 @@
 import 'package:aula_api/poke_controller.dart';
+import 'package:aula_api/pokemon.dart';
 import 'package:flutter/material.dart';
 
 class PokeView extends StatefulWidget {
@@ -15,9 +16,28 @@ class _PokeViewState extends State<PokeView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          FutureBuilder<Pokemon>(
+              future: controller.pokemon,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return CircularProgressIndicator();
+                }
+                if (snapshot.hasData) {
+                  return Text(
+                    snapshot.data.nome,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                    ),
+                  );
+                }
+                return Container();
+              }),
           ElevatedButton(
             onPressed: () {
-              controller.loadPokemon();
+              setState(() {
+                controller.loadPokemon();
+              });
             },
             child: Text("Load Pokémon"),
           ),
