@@ -11,7 +11,7 @@ class API {
     if (response.statusCode == 200) {
       return Pokemon.fromJson(jsonDecode(response.body));
     } else {
-      print("Erro");
+      return Future.error("Pokemon not found");
     }
   }
 }

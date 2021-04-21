@@ -4,6 +4,6 @@ class Pokemon {
 
   Pokemon.fromJson(Map<String, dynamic> json) {
     nome = json["name"];
-    urlImage = json["sprites"]["front_default"];
+    urlImage = json["sprites"]["other"]["official-artwork"]["front_default"];
   }
 }
